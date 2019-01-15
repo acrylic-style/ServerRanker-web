@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'welcome');
 
 Route::get('/login', function () {
     $cid = env('CLIENT_ID', '');
@@ -40,7 +38,6 @@ Route::any('/callback', function () {
             CURLOPT_CUSTOMREQUEST => "POST",
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
-//            CURLOPT_POSTFIELDS => "grant_type=authorization_code&client_id=$client_id&client_secret=$client_secret&redirect_uri=$redirect_uri&code=$code&scope=identify",
             CURLOPT_POSTFIELDS => array(
                 "grant_type" => "authorization_code",
                 "client_id" => $client_id,
