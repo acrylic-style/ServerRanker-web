@@ -80,27 +80,38 @@
                 content: ' ';
             }
         </style>
+        <script>
+            function selectServer() {
+                location.href = `/dashboard/${document.getElementById("server").value}`;
+            }
+        </script>
     </head>
     <body class="body-bg">
         <div class="flex-center position-ref full-height">
             <div class="top-right links">
-                @if ($request->session()->has('access_token'))
-                    <a href="/dashboard">Dashboard</a>
-                    <a href="/leaderboard">Leaderboard</a>
-                    <a href="/logout">Logout</a>
-                @else
-                    <a href="{{ route('login') }}">Login</a>
-                @endauth
+                <select id="server" onchange="selectServer();">
+                    <option value="" selected disabled>Select Server</option>
+                    <option value="">--------------- Back ---------------</option>
+                    @foreach ($guilds as $guild)
+                        <option value="{{ $guild['id'] }}">{{ $guild['name'] }}</option>
+                    @endforeach
+                </select>
+                <a href="{{ url('/') }}">Home</a>
+                <a href="{{ route('logout') }}">Logout</a>
             </div>
             <div class="content">
-                <div class="title m-b-md">
-                    Server Ranker
+                <div class="title">
+                    @if ($invalid)
+                        *Sad Trombone*
+                        </div>Invalid server specified...try another server?</div></div></body></html>
+                        <?php exit; ?>
+                    @endif
+                    {{ $guildName }} Settings
                 </div>
 
                 <div class="links">
-                    <a href="https://discord.gg/8u2QVRF">Official Server</a>
+                    <a href="https://discord.gg/8u2QVRF">Support Server</a>
                     <a href="https://discordapp.com/api/oauth2/authorize?client_id=534057687751589895&permissions=379968&scope=bot">Invite</a>
-                    <a href="/login">Login with Discord</a>
                     <a href="https://github.com/acrylic-style/ServerRanker">GitHub</a>
                 </div>
             </div>

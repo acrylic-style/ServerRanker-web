@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
         <!-- Styles -->
         <style>
@@ -45,7 +46,7 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 48px;
             }
 
             .links > a {
@@ -79,29 +80,35 @@
                 left: 0;
                 content: ' ';
             }
+
+            .material-icons {
+                font-size: 36px;
+            }
         </style>
+        <script>
+            function selectServer() {
+                location.href = `/leaderboard/${document.getElementById("server").value}`;
+            }
+        </script>
     </head>
     <body class="body-bg">
         <div class="flex-center position-ref full-height">
             <div class="top-right links">
-                @if ($request->session()->has('access_token'))
-                    <a href="/dashboard">Dashboard</a>
-                    <a href="/leaderboard">Leaderboard</a>
-                    <a href="/logout">Logout</a>
-                @else
-                    <a href="{{ route('login') }}">Login</a>
-                @endauth
+                <select id="server" onchange="selectServer();">
+                    <option value="" selected disabled>Select Server</option>
+                    <option value="">--------------- Back ---------------</option>
+                    <option value="server">Server Leaderboard</option>
+                    <option value="user" disabled>User Leaderboard (This page)</option>
+                    @foreach ($guilds as $guild)
+                        <option value="{{ $guild->{'id'} }}" disabled>{{ $guild->{'name'} }}</option>
+                    @endforeach
+                </select>
+                <a href="{{ url('/') }}">Home</a>
+                <a href="{{ route('logout') }}">Logout</a>
             </div>
             <div class="content">
-                <div class="title m-b-md">
-                    Server Ranker
-                </div>
-
-                <div class="links">
-                    <a href="https://discord.gg/8u2QVRF">Official Server</a>
-                    <a href="https://discordapp.com/api/oauth2/authorize?client_id=534057687751589895&permissions=379968&scope=bot">Invite</a>
-                    <a href="/login">Login with Discord</a>
-                    <a href="https://github.com/acrylic-style/ServerRanker">GitHub</a>
+                <div class="title">
+                    <i class="material-icons">warning</i>The leaderboard is not yet available!
                 </div>
             </div>
         </div>
