@@ -128,7 +128,7 @@
                                 <th class="scoreboard-table-header scoreboard-table-header_rank">Rank</th>
                                 <th class="scoreboard-table-header scoreboard-table-header_score">Score</th>
                                 <th class="scoreboard-table-header scoreboard-table-header_server">Server</th>
-                                <th class="scoreboard-table-header scoreboard-table-header_region">Region</th>
+                                <th class="scoreboard-table-header scoreboard-table-header_serverid">Server ID</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -139,7 +139,7 @@
                                     <td>#{{$i}}</td>
                                     <td>{{ $format($data['data']->{'point'}) }}</td>
                                     <td>{{ $data['name'] }}</td>
-                                    <td>{{ $data['region'] }}</td>
+                                    <td>{{ $data['id'] }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -147,7 +147,7 @@
 }
 
 .scoreboard-table-header_rank {
-  width: 10px;
+  width: 6px;
 }
 
 .scoreboard-table-header_score {
@@ -158,7 +158,7 @@
   width: 120px
 }
 
-.scoreboard-table-header_region {
+.scoreboard-table-header_serverid {
   width: 10px
 }
 
