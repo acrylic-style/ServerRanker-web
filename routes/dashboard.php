@@ -31,7 +31,7 @@ Route::get('/dashboard', function (Request $request) {
 });
 
 Route::get("/dashboard/{server}", function(Request $request, $server) {
-    if (!$request->session()->has('access_token')) return Redirect::to("/");
+    if (!$request->session()->has('access_token')) return Redirect::to("/login");
     $options = [
         CURLOPT_HTTPHEADER => ["Authorization: Bearer {$request->session()->get('access_token')}"],
         CURLOPT_RETURNTRANSFER => true,

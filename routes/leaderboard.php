@@ -25,7 +25,7 @@ Route::get('/leaderboard', function(Request $request) {
 });
 
 Route::get("/leaderboard/server", function(Request $request) {
-    if (!$request->session()->has('access_token')) return Redirect::to("/");
+    if (!$request->session()->has('access_token')) return Redirect::to("/login");
     $options = [
         CURLOPT_HTTPHEADER => ["Authorization: Bearer {$request->session()->get('access_token')}"],
         CURLOPT_RETURNTRANSFER => true,
@@ -75,7 +75,7 @@ Route::get("/leaderboard/server", function(Request $request) {
 });
 
 Route::get("/leaderboard/user", function(Request $request) {
-    if (!$request->session()->has('access_token')) return Redirect::to("/");
+    if (!$request->session()->has('access_token')) return Redirect::to("/login");
     $options = [
         CURLOPT_HTTPHEADER => ["Authorization: Bearer {$request->session()->get('access_token')}"],
         CURLOPT_RETURNTRANSFER => true,
