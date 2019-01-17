@@ -40,9 +40,38 @@ Route::get("/leaderboard/server", function(Request $request) {
     curl_setopt_array($info, $options);
     $guilds = json_decode(curl_exec($info));
     curl_close($info);
+    $directories = glob(env('SERVERRANKER_LOCATION', '../../ServerRanker').'/data/servers/*');
+    $guildNames = [];
+    foreach ($guilds as $guild) {
+        $guildNames[$guild->{'id'}] = $guild->{'name'};
+    }
+    $data = [];
+    foreach ($directories as $dir) {
+        preg_match("/\/data\/servers\/(\d{10,20})/", $dir, $matches);
+        $data[$matches[1]]["data"] = json_decode(file_get_contents("$dir/config.json"));
+        $data[$matches[1]]["id"] = $matches[1];
+        $info = curl_init("https://discordapp.com/api/guilds/".$matches[1]);
+        curl_setopt_array($info, [
+            CURLOPT_HTTPHEADER => ["Authorization: Bot ".env("BOT_TOKEN", "")],
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_SSL_VERIFYHOST => false,
+            CURLOPT_SSL_VERIFYPEER => false,
+        ]);
+        $guild = json_decode(curl_exec($info));
+        curl_close($info);
+        $data[$matches[1]]["name"] = $guild->{'name'};
+        $data[$matches[1]]["region"] = $guild->{'region'};
+    }
+    sort($data);
+    $data = array_reverse($data, true);
+    $data = array_slice($data, 0);
     return view('leaderboard-server')->with([
         "user" => $user,
         "guilds" => $guilds,
+        "datas" => $data,
+        "format" => function ($number) {
+            return number_format((float)$number);
+        }
     ]);
 });
 

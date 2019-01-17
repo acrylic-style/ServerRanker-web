@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+        <link href="/css/common.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
         <!-- Styles -->
@@ -66,7 +67,7 @@
             .body-bg {
                 background-image: url('../images/background.png');
                 background-repeat: no-repeat;
-                background-attachment: fixed;
+                background-attachment: scroll;
                 background-position: center;
                 background-size: cover;
             }
@@ -94,21 +95,55 @@
     <body class="body-bg">
         <div class="flex-center position-ref full-height">
             <div class="top-right links">
-                <select id="server" onchange="selectServer();">
-                    <option value="" selected disabled>Select Server</option>
-                    <option value="">--------------- Back ---------------</option>
-                    <option value="server" disabled>Server Leaderboard (This page)</option>
-                    <option value="user">User Leaderboard</option>
-                    @foreach ($guilds as $guild)
-                        <option value="{{ $guild->{'id'} }}" disabled>{{ $guild->{'name'} }}</option>
-                    @endforeach
-                </select>
-                <a href="{{ url('/') }}">Home</a>
-                <a href="{{ route('logout') }}">Logout</a>
+                <div class="__button">
+                    <select id="server" class="btn-home btn-home--green" onchange="selectServer();">
+                        <option value="" selected disabled>Select Server</option>
+                        <option value="">--------------- Back ---------------</option>
+                        <option value="server" disabled>Server Leaderboard (This page)</option>
+                        <option value="user">User Leaderboard</option>
+                        @foreach ($guilds as $guild)
+                            <option value="{{ $guild->{'id'} }}" disabled>{{ $guild->{'name'} }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="__button">
+                    <a href="{{ url('/') }}" class="btn-home btn-home--pink-darker">
+                        <span class="btn-home__text">Home</span>
+                    </a>
+                </div>
+                <div class="__button">
+                    <a href="{{ route('logout') }}" class="btn-home btn-home--teal">
+                        <span class="btn-home__text">Logout</span>
+                    </a>
+                </div>
             </div>
             <div class="content">
                 <div class="title">
-                    <i class="material-icons">warning</i>The leaderboard is not yet available!
+                    Server Leaderboard
+                </div>
+                <div class="scoreboard-table" style="background-color: rgba(10,10,10,0.6);">
+                    <table class="scoreboard-table-table">
+                        <thead>
+                            <tr>
+                                <th class="scoreboard-table-header scoreboard-table-header_rank">Rank</th>
+                                <th class="scoreboard-table-header scoreboard-table-header_score">Score</th>
+                                <th class="scoreboard-table-header scoreboard-table-header_server">Server</th>
+                                <th class="scoreboard-table-header scoreboard-table-header_region">Region</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $i = 0; ?>
+                            @foreach ($datas as $data)
+                                <?php $i++; ?>
+                                <tr class="scoreboard-table-body-row">
+                                    <td>#{{$i}}</td>
+                                    <td>{{ $format($data['data']->{'point'}) }}</td>
+                                    <td>{{ $data['name'] }}</td>
+                                    <td>{{ $data['region'] }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

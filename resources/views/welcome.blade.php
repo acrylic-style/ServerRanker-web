@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+        <link href="/css/common.css" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
         <style>
@@ -85,11 +86,27 @@
         <div class="flex-center position-ref full-height">
             <div class="top-right links">
                 @if ($request->session()->has('access_token'))
-                    <a href="/dashboard">Dashboard</a>
-                    <a href="/leaderboard">Leaderboard</a>
-                    <a href="/logout">Logout</a>
+                    <div class="__button">
+                        <a href="/dashboard" class="btn-home btn-home--green">
+                            <span class="btn-home__text">Dashboard</span>
+                        </a>
+                    </div>
+                    <div class="__button">
+                        <a href="/leaderboard" class="btn-home btn-home--pink-darker">
+                            <span class="btn-home__text">Leaderboard</span>
+                        </a>
+                    </div>
+                    <div class="__button">
+                        <a href="/logout" class="btn-home btn-home--teal">
+                            <span class="btn-home__text">Logout</span>
+                        </a>
+                    </div>
                 @else
-                    <a href="{{ route('login') }}">Login</a>
+                    <div class="__button">
+                        <a href="{{ route('login') }}" class="btn-home btn-home--green">
+                            <span class="btn-home__text">Login</span>
+                        </a>
+                    </div>
                 @endauth
             </div>
             <div class="content">

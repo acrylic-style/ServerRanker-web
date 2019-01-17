@@ -1,0 +1,172 @@
+
+.__button {
+  margin: 10px 0
+}
+
+.__buttons {
+  margin: -10px 0
+}
+
+.btn-home {
+  color: #fff;
+  border-radius: 6px;
+  background-image: url(/images/backgrounds/button.svg);
+  background-size: 175%;
+  background-position: 50%;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 3px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  transition: all .12s ease-in-out;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  background-color: #29b;
+  box-shadow: 0 3px #1a7690,0 4px 3px rgba(0,0,0,.25)
+}
+
+.btn-home,.btn-home:active,.btn-home:focus,.btn-home:hover {
+  text-decoration: none
+}
+
+.btn-home:active,.btn-home:focus,.btn-home:hover {
+  color: #fff
+}
+
+.btn-home:focus {
+  background-position: calc(50% - 10px) 50%;
+  background-color: #26abd1
+}
+
+.btn-home:hover {
+  background-color: #36b6da
+}
+
+.btn-home:active,.btn-home:hover {
+  background-position: calc(50% - 20px) 50%
+}
+
+.btn-home:active {
+  -webkit-transform: translateY(2px);
+  transform: translateY(2px);
+  box-shadow: 0 1px #1a7690,0 2px 3px rgba(0,0,0,.25)
+}
+
+.btn-home--green {
+  background-color: #88b300;
+  box-shadow: 0 3px #618000,0 4px 3px rgba(0,0,0,.25)
+}
+
+.btn-home--green:focus {
+  background-position: calc(50% - 10px) 50%;
+  background-color: #9bcc00
+}
+
+.btn-home--green:hover {
+  background-position: calc(50% - 20px) 50%;
+  background-color: #afe600
+}
+
+.btn-home--green:active {
+  -webkit-transform: translateY(2px);
+  transform: translateY(2px);
+  background-position: calc(50% - 20px) 50%;
+  box-shadow: 0 1px #618000,0 2px 3px rgba(0,0,0,.25)
+}
+
+.btn-home--pink-darker {
+  background-color: #b17;
+  box-shadow: 0 3px #8c0d59,0 4px 3px rgba(0,0,0,.25)
+}
+
+.btn-home--pink-darker:focus {
+  background-position: calc(50% - 10px) 50%;
+  background-color: #d21386
+}
+
+.btn-home--pink-darker:hover {
+  background-position: calc(50% - 20px) 50%;
+  background-color: #ea1595
+}
+
+.btn-home--pink-darker:active {
+  -webkit-transform: translateY(2px);
+  transform: translateY(2px);
+  background-position: calc(50% - 20px) 50%;
+  box-shadow: 0 1px #8c0d59,0 2px 3px rgba(0,0,0,.25)
+}
+
+.btn-home--teal {
+  background-color: #4dc0b5;
+  box-shadow: 0 3px #1a9083,0 4px 3px rgba(0,0,0,.25)
+}
+
+.btn-home--teal:focus {
+  background-position: calc(50% - 10px) 50%;
+  background-color: #6fe2d7
+}
+
+.btn-home--teal:hover {
+  background-position: calc(50% - 20px) 50%;
+  background-color: #7ff5d5
+}
+
+.btn-home--teal:active {
+  -webkit-transform: translateY(2px);
+  transform: translateY(2px);
+  background-position: calc(50% - 20px) 50%;
+  box-shadow: 0 1px #8c0d59,0 2px 3px rgba(0,0,0,.25)
+}
+
+.btn-home__text {
+  flex: 1
+}
+
+.btn-home__icon {
+  font-size: 150%;
+  flex: none
+}
+
+.scoreboard-table {
+  margin-right: -16px;
+  overflow-x: auto
+}
+
+.scoreboard-table-table {
+  width: 100%;
+  min-width: 1000px;
+  font-size: 12px
+}
+
+.scoreboard-table-header {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding-bottom: 5px
+}
+
+.scoreboard-table-header_rank {
+  width: 10px;
+}
+
+.scoreboard-table-header_score {
+  width: 200px
+}
+
+.scoreboard-table-header_server {
+  width: 120px
+}
+
+.scoreboard-table-header_region {
+  width: 10px
+}
+
+.scoreboard-table-body-row {
+  height: 1.8em;
+}
+
+.scoreboard-table-body-row:hover {
+  background-color: #555;
+  color: #fff;
+}

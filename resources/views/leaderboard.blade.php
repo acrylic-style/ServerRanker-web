@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+        <link href="/css/common.css" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
         <style>
@@ -89,17 +90,27 @@
     <body class="body-bg">
         <div class="flex-center position-ref full-height">
             <div class="top-right links">
-                <select id="server" onchange="selectServer();">
-                    <option value="" selected disabled>Select Server</option>
-                    <option value="" disabled>------------------------------------</option>
-                    <option value="server">Server Leaderboard</option>
-                    <option value="user">User Leaderboard</option>
-                    @foreach ($guilds as $guild)
-                        <option value="{{ $guild->{'id'} }}" disabled>{{ $guild->{'name'} }}</option>
-                    @endforeach
-                </select>
-                <a href="{{ url('/') }}">Home</a>
-                <a href="{{ route('logout') }}">Logout</a>
+                <div class="__button">
+                    <select id="server" class="btn-home btn-home--green" onchange="selectServer();">
+                        <option value="" selected disabled>Select Server</option>
+                        <option value="">--------------- Back ---------------</option>
+                        <option value="server">Server Leaderboard</option>
+                        <option value="user">User Leaderboard</option>
+                        @foreach ($guilds as $guild)
+                            <option value="{{ $guild->{'id'} }}" disabled>{{ $guild->{'name'} }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="__button">
+                    <a href="{{ url('/') }}" class="btn-home btn-home--pink-darker">
+                        <span class="btn-home__text">Home</span>
+                    </a>
+                </div>
+                <div class="__button">
+                    <a href="{{ route('logout') }}" class="btn-home btn-home--teal">
+                        <span class="btn-home__text">Logout</span>
+                    </a>
+                </div>
             </div>
             <div class="content">
                 <div class="title m-b-md">
