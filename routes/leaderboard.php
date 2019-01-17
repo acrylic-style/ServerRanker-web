@@ -50,7 +50,7 @@ Route::get("/leaderboard/server", function(Request $request) {
         preg_match("/\/data\/servers\/(\d{10,20})/", $dir, $matches);
         $data[$matches[1]]["data"] = json_decode(file_get_contents("$dir/config.json"));
         $data[$matches[1]]["id"] = $matches[1];
-        $data[$matches[1]]["name"] = $guildData[$matches[1]]['name'];
+        $data[$matches[1]]["name"] = in_array($matches[1], array_keys($guildData)) ? $guildData[$matches[1]]['name'] : 'Unknown Server';
     }
     sort($data);
     $data = array_reverse($data, true);
