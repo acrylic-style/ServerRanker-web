@@ -128,6 +128,7 @@
                                 <th class="scoreboard-table-header scoreboard-table-header_rank">Rank</th>
                                 <th class="scoreboard-table-header scoreboard-table-header_score">Score</th>
                                 <th class="scoreboard-table-header scoreboard-table-header_server">Server</th>
+                                <th class="scoreboard-table-header scoreboard-table-header_nom">Number of messages</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -138,6 +139,7 @@
                                     <td>#{{$i}}</td>
                                     <td>{{ $format($data['data']->{'point'}) }}</td>
                                     <td>{{ $data['name'] }}</td>
+                                    <td>{{ round((int)$data['data']->{'point'} / 100) }} - {{ round((int)$data['data']->{'point'} / 300) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
