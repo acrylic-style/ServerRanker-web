@@ -42,7 +42,16 @@ Route::get("/leaderboard/server", function(Request $request) {
     curl_close($info);
     $directories = glob(env('SERVERRANKER_LOCATION', '../../ServerRanker').'/data/servers/*');
     $guildData = [];
-    foreach ($guilds as $guild) {
+    $info = curl_init("https://discordapp.com/api/users/@me/guilds");
+    curl_setopt_array($info, [
+        CURLOPT_HTTPHEADER => ["Authorization: Bot ".env("BOT_TOKEN", "")],
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_SSL_VERIFYHOST => false,
+        CURLOPT_SSL_VERIFYPEER => false,
+    ]);
+    $botguilds = json_decode(curl_exec($info));
+    curl_close($info);
+    foreach ($botguilds as $guild) {
         $guildData[$guild->{"id"}] = ["name" => $guild->{'name'}];
     }
     $data = [];
