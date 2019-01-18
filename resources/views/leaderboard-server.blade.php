@@ -144,7 +144,7 @@
                                 <?php $i++; ?>
                                 <tr class="scoreboard-table-body-row">
                                     <td>#{{$i}}</td>
-                                    <td>{{ $format($data['data']->{'point'}) }}</td>
+                                    <td>{{ $format($points[$data['id']])/*$format($data['data']->{'point'})*/ }}</td>
                                     <td>{{ $data['name'] }}</td>
                                     <td>{{ round((int)$data['data']->{'point'} / 300) }} - {{ round((int)$data['data']->{'point'} / 100) }}</td>
                                 </tr>

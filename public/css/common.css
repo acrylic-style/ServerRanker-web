@@ -170,3 +170,8 @@
   background-color: #555;
   color: #fff;
 }
+
+.scoreboard-table-body-highlight {
+  background-color: rgba(0, 255, 0, 0.5);
+  color: #fff;
+}
