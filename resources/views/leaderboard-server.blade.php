@@ -120,8 +120,9 @@
             <div class="content">
                 <?php $i = 0; ?>
                 @foreach ($datas as $data)
+                    <?php if (!$data['name']) continue; ?>
                     <?php $i++; ?>
-                    @if ($i <= (count($datas) / 2))
+                    @if ($i <= (count(array_filter($datas, function ($arr) {return $arr['name'];})) / 2))
                         <br />
                     @endif
                 @endforeach
