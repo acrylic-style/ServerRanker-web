@@ -64,7 +64,7 @@
                 margin-bottom: 30px;
             }
 
-            .body-bg {
+            body {
                 background-image: url('../images/background.png');
                 background-repeat: no-repeat;
                 background-attachment: scroll;
@@ -72,7 +72,7 @@
                 background-size: cover;
             }
 
-            .body-bg::before {
+            body::before {
                 background-color: rgba(0,0,0,0.85);
                 position: absolute;
                 top: 0;
@@ -93,7 +93,7 @@
         </script>
     </head>
     <body class="body-bg">
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center position-ref full-height" style="overflow: scroll;">
             <div class="top-right links">
                 <div class="__button">
                     <select id="server" class="btn-home btn-home--green" onchange="selectServer();">
@@ -121,7 +121,7 @@
                 <?php $i = 0; ?>
                 @foreach ($datas as $data)
                     <?php $i++; ?>
-                    @if ($i <= count($datas))
+                    @if ($i <= (count($datas) / 2))
                         <br />
                     @endif
                 @endforeach
