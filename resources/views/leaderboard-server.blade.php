@@ -146,7 +146,7 @@
                                     <td>#{{$i}}</td>
                                     <td>{{ $format($data['data']->{'point'}) }}</td>
                                     <td>{{ $data['name'] }}</td>
-                                    <td>{{ round((int)$data['data']->{'point'} / 100) }} - {{ round((int)$data['data']->{'point'} / 300) }}</td>
+                                    <td>{{ round((int)$data['data']->{'point'} / 300) }} - {{ round((int)$data['data']->{'point'} / 100) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
