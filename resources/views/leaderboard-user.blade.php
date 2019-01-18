@@ -99,7 +99,7 @@
                     <select id="server" class="btn-home btn-home--green" onchange="selectServer();">
                         <option value="" selected disabled>Select Server</option>
                         <option value="">--------------- Back ---------------</option>
-                        <option value="server" disabled>Server Leaderboard</option>
+                        <option value="server">Server Leaderboard</option>
                         <option value="user" disabled>User Leaderboard (This page)</option>
                         @foreach ($guilds as $guild)
                             <option value="{{ $guild->{'id'} }}" disabled>{{ $guild->{'name'} }}</option>
