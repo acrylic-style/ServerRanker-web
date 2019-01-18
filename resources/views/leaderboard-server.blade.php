@@ -141,6 +141,7 @@
                         <tbody>
                             <?php $i = 0; ?>
                             @foreach ($datas as $data)
+                                <?php if (!$data['name']) continue; ?>
                                 <?php $i++; ?>
                                 <tr class="scoreboard-table-body-row">
                                     <td>#{{$i}}</td>
