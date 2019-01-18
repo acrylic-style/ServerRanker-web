@@ -118,6 +118,13 @@
                 </div>
             </div>
             <div class="content">
+                <?php $i = 0; ?>
+                @foreach ($datas as $data)
+                    <?php $i++; ?>
+                    @if ($i <= count($datas))
+                        <br />
+                    @endif
+                @endforeach
                 <div class="title">
                     Server Leaderboard
                 </div>
