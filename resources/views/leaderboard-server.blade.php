@@ -122,7 +122,7 @@
                 @foreach ($datas as $data)
                     <?php if (!$data['name']) continue; ?>
                     <?php $i++; ?>
-                    @if ($i <= (count(array_filter($datas, function ($arr) {return $arr['name'];})) / 2))
+                    @if ($i <= (count(array_filter($datas, function ($arr) {return $arr['name'];}))))
                         <br />
                     @endif
                 @endforeach
