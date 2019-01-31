@@ -94,7 +94,7 @@
         </script>
     </head>
     <body class="body-bg">
-        <div class="center position-ref full-height" style="overflow: scroll;overflow-x:hidden;">
+        <div class="center position-ref full-height" style="overflow-y: scroll;">
             <div class="top-right links">
                 <div class="__button">
                     <select id="server" class="btn-home btn-home--green" onchange="selectServer();">
