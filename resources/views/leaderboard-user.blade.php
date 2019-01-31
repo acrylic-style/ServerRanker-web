@@ -64,15 +64,15 @@
                 margin-bottom: 30px;
             }
 
-            .body-bg {
+            body {
                 background-image: url('../images/background.png');
                 background-repeat: no-repeat;
-                background-attachment: fixed;
+                background-attachment: scroll;
                 background-position: center;
                 background-size: cover;
             }
 
-            .body-bg::before {
+            body::before {
                 background-color: rgba(0,0,0,0.85);
                 position: absolute;
                 top: 0;
@@ -93,7 +93,7 @@
         </script>
     </head>
     <body class="body-bg">
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center position-ref full-height" style="overflow: scroll;">
             <div class="top-right links">
                 <div class="__button">
                     <select id="server" class="btn-home btn-home--green" onchange="selectServer();">
@@ -118,8 +118,41 @@
                 </div>
             </div>
             <div class="content">
+            <?php $i = 0; ?>
+                @foreach ($datas as $data)
+                    <?php if (!$data['name'] || $data['name'] === 'Unknown User#0000') continue; ?>
+                    <?php $i++; ?>
+                    @if ($i <= (count(array_filter($datas, function ($arr) {return $arr['name'];}))))
+                        <br />
+                    @endif
+                @endforeach
                 <div class="title">
-                    <i class="material-icons">warning</i>The leaderboard is not yet available!
+                    User Leaderboard
+                </div>
+                <div class="scoreboard-table" style="background-color: rgba(10,10,10,0.6);">
+                    <table class="scoreboard-table-table">
+                        <thead>
+                            <tr>
+                                <th class="scoreboard-table-header scoreboard-table-header_rank">Rank</th>
+                                <th class="scoreboard-table-header scoreboard-table-header_score">Score</th>
+                                <th class="scoreboard-table-header scoreboard-table-header_user">User</th>
+                                <th class="scoreboard-table-header scoreboard-table-header_nom">Number of messages</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $i = 0; ?>
+                            @foreach ($datas as $data)
+                                <?php if (!$data['name'] || $data['name'] === 'Unknown User#0000') continue; ?>
+                                <?php $i++; ?>
+                                <tr class="scoreboard-table-body-row">
+                                    <td>#{{$i}}</td>
+                                    <td>{{ $format($data['data']->{'point'}) }}</td>
+                                    <td>{{ $data['name'] }}</td>
+                                    <td>{{ round((int)$data['data']->{'point'} / 300) }} - {{ round((int)$data['data']->{'point'} / 100) }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
