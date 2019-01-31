@@ -26,9 +26,10 @@
                 height: 100vh;
             }
 
-            .flex-center {
+            .center {
                 align-items: center;
-                display: flex;
+                display: width;
+                margin: 0 auto;
                 justify-content: center;
             }
 
@@ -93,7 +94,7 @@
         </script>
     </head>
     <body class="body-bg">
-        <div class="flex-center position-ref full-height" style="overflow: scroll;">
+        <div class="center position-ref full-height" style="overflow: scroll;">
             <div class="top-right links">
                 <div class="__button">
                     <select id="server" class="btn-home btn-home--green" onchange="selectServer();">
@@ -118,14 +119,7 @@
                 </div>
             </div>
             <div class="content">
-            <?php $i = 0; ?>
-                @foreach ($datas as $data)
-                    <?php if (!$data['name'] || $data['name'] === 'Unknown User#0000') continue; ?>
-                    <?php $i++; ?>
-                    @if ($i <= (count(array_filter($datas, function ($arr) {return $arr['name'];}))))
-                        <br />
-                    @endif
-                @endforeach
+                <div style="height: 200px"></div>
                 <div class="title">
                     User Leaderboard
                 </div>

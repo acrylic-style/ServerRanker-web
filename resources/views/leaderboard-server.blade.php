@@ -26,9 +26,10 @@
                 height: 100vh;
             }
 
-            .flex-center {
+            .center {
                 align-items: center;
-                display: flex;
+                display: width;
+                margin: 0 auto;
                 justify-content: center;
             }
 
@@ -118,14 +119,7 @@
                 </div>
             </div>
             <div class="content">
-                <?php $i = 0; ?>
-                @foreach ($datas as $data)
-                    <?php if (!$data['name']) continue; ?>
-                    <?php $i++; ?>
-                    @if ($i <= (count(array_filter($datas, function ($arr) {return $arr['name'];}))))
-                        <br />
-                    @endif
-                @endforeach
+                <div style="height: 200px"></div>
                 <div class="title">
                     Server Leaderboard
                 </div>
