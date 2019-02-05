@@ -138,7 +138,11 @@
                             @foreach ($datas as $data)
                                 <?php if (!$data['name']) continue; ?>
                                 <?php $i++; ?>
-                                <tr class="scoreboard-table-body-row">
+                                @if (in_array($data['id'], $ids))
+                                  <tr class="scoreboard-table-body-row scoreboard-table-body-highlight">
+                                @else
+                                  <tr class="scoreboard-table-body-row">
+                                @endif
                                     <td>#{{$i}}</td>
                                     <td>{{ $format($data['data']->{'point'}) }}</td>
                                     <td>{{ $data['name'] }}</td>

@@ -51,6 +51,10 @@ Route::get("/leaderboard/server", function(Request $request) {
     ]);
     $botguilds = json_decode(curl_exec($info));
     curl_close($info);
+    $ids = "";
+    foreach ($guilds as $guild) {
+        $ids .= (string)$guild->{"id"} . ",";
+    }
     foreach ($botguilds as $guild) {
         $guildData[$guild->{"id"}] = ["name" => $guild->{'name'}];
     }
@@ -66,6 +70,7 @@ Route::get("/leaderboard/server", function(Request $request) {
     sort($data);
     $data = array_reverse($data, true);
     return view('leaderboard-server')->with([
+        "ids" => explode(",", $ids),
         "user" => $user,
         "guilds" => $guilds,
         "datas" => $data,
